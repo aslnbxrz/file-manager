@@ -30,8 +30,8 @@ class FileManagerServiceProvider extends ServiceProvider
         }
 
         $this->publishes([
-            __DIR__ . '/Database/Migrations/create_files_table.php.stub' => $this->getMigrationFileName('create_files_table.php'),
             __DIR__ . '/Database/Migrations/create_folders_table.php.stub' => $this->getMigrationFileName('create_folders_table.php'),
+            __DIR__ . '/Database/Migrations/create_files_table.php.stub' => $this->getMigrationFileName('create_files_table.php'),
         ], 'migrations');
     }
 
