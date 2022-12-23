@@ -5,8 +5,8 @@ namespace Aslnbxrz\FileManager\Http\Controllers;
 use App\Http\Controllers\Controller;
 use File;
 use Illuminate\Http\Request;
-use Modules\Filemanager\Entities\Files;
-use Modules\FileManager\Helpers\FileManagerHelper;
+use Aslnbxrz\Filemanager\Models\Files;
+use Aslnbxrz\Filemanager\Helpers\FileManagerHelper;
 use Aslnbxrz\FileManager\Http\Repository\Interfaces\FileInterface;
 use Spatie\QueryBuilder\QueryBuilder;
 
