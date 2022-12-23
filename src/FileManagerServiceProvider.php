@@ -29,6 +29,12 @@ class FileManagerServiceProvider extends ServiceProvider
             return;
         }
 
+
+        $this->publishes([
+            __DIR__.'/Config/image.php' => config_path('image.php'),
+            __DIR__.'/Config/system.php' => config_path('system.php'),
+        ], 'config');
+
         $this->publishes([
             __DIR__ . '/Database/Migrations/create_folders_table.php.stub' => $this->getMigrationFileName('2022_12_23_010706_create_folders_table.php'),
             __DIR__ . '/Database/Migrations/create_files_table.php.stub' => $this->getMigrationFileName('2022_12_23_010707_create_files_table.php'),

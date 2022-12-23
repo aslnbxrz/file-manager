@@ -6,7 +6,11 @@
     "autoload": {
         "psr-4": {
             "Aslnbxrz\\FileManager\\": "src/"
-        }
+
+        },
+        "files": [
+            "src/Helpers/ResponseHelper.php"
+        ]
     },
     "authors": [
         {
@@ -14,5 +18,18 @@
             "email": "bexruz.aslonov1@gmail.com"
         }
     ],
-    "require": {}
+    "require": {
+        "php": "^8.0|^8.1",
+        "intervention/image": "^2.7",
+        "laravel/passport": "^11.3",
+        "spatie/laravel-query-builder": "^5.1",
+        "ext-http": "*"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Aslnbxrz\\FileManager\\FileManagerServiceProvider"
+            ]
+        }
+    }
 }
