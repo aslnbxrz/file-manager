@@ -168,7 +168,6 @@ class FileRepository implements FileInterface
     {
         if (!in_array($ext = $file->extension(), explode(',', $isFront ? Files::AVAILABLE_EXTENSIONS : 'jpeg,jpg,png,mp4'))) {
             throw new AccessDeniedException("Unknown extension $ext", 422);
-//            return errorResponse("Unknown extension $ext", ["available_extensions" => Files::AVAILABLE_EXTENSIONS], null, 422);
         }
 
         $generatePathFileDTO = new GeneratePathFileDTO();

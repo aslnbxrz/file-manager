@@ -16,6 +16,20 @@ class Folder extends Model
         "status"
     ];
 
+    public static function rules(): array
+    {
+        return [
+            'id' => 'integer',
+            'title' => 'string',
+            'slug' => 'string|nullable',
+            'description' => 'string|nullable',
+            'status' => 'integer|nullable',
+            'parent_id' => 'integer|nullable',
+        ];
+    }
+
+    protected $with = ['children', 'parent'];
+
     public function parent(): BelongsTo
     {
         return $this->belongsTo(self::class);

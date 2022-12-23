@@ -1,8 +1,8 @@
 <?php
 
 use App\Models\User;
-use Illuminate\Http\Request;
 use Aslnbxrz\FileManager\Http\Controllers\FileManagerController;
+use Aslnbxrz\FileManager\Http\Controllers\FileManagerFolderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,27 +19,33 @@ use Aslnbxrz\FileManager\Http\Controllers\FileManagerController;
             File manager Controller  => START
 --------------------------------------------------------------------------------*/
 Route::prefix('v1')->group(function () {
-//    Route::middleware(['auth', 'scope:' . implode(',', User::ALL_ROLES)])->group(function () {
-//        Route::prefix('admin/file-manager/folder')->group(function () {
-//            Route::get('/', [FileManagerFolderController::class,"index"]);
-//            Route::get('/{id}', '\Modules\FileManager\Http\Controllers\FilemanagerFolderController@show');
-//            Route::post('/', '\Modules\FileManager\Http\Controllers\FilemanagerFolderController@create');
-//            Route::put('/{id}', '\Modules\FileManager\Http\Controllers\FilemanagerFolderController@update');
-//            Route::delete('/{id}', '\Modules\FileManager\Http\Controllers\FilemanagerFolderController@delete');
-//        });
-        Route::prefix('admin/file-manager')->group(function () {
-            Route::get('/', [FileManagerController::class, "index"]);
-            Route::get('{file}', [FileManagerController::class, "show"]);
-            Route::put('{file}', [FileManagerController::class, "update"]);
-            Route::delete('{file}', [FileManagerController::class, "delete"]);
-            Route::post('upload', [FileManagerController::class, "upload"]);
-        });
-//    });
-
-    Route::prefix('file-manager')->group(function () {
-        Route::delete('{file}', [FileManagerController::class, "delete"]);
-        Route::post('upload', [FileManagerController::class, "frontUpload"]);
+    Route::middleware(['auth', 'scope:' . implode(',', User::ALL_ROLES)])->group(function () {
+        Route::prefix('admin/file-manager/folder')
+            ->controller(FileManagerFolderController::class)
+            ->group(function () {
+                Route::get('/', "index");
+                Route::get('/{folder}', "show");
+                Route::post('/', "create");
+                Route::put('/{folder}', "update");
+                Route::delete('/{folder}', "delete");
+            });
+        Route::prefix('admin/file-manager')
+            ->controller(FileManagerController::class)
+            ->group(function () {
+                Route::get('/', "index");
+                Route::get('{file}', "show");
+                Route::put('{file}', "update");
+                Route::delete('{file}', "delete");
+                Route::post('upload', "upload");
+            });
     });
+
+    Route::prefix('file-manager')
+        ->controller(FileManagerController::class)
+        ->group(function () {
+            Route::delete('{file}', "delete");
+            Route::post('upload', "frontUpload");
+        });
 });
 /*--------------------------------------------------------------------------------
             File manager Controller => END
