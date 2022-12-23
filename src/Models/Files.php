@@ -3,9 +3,9 @@
 namespace Aslnbxrz\FileManager\Models;
 
 use App\Models\User;
+use Aslnbxrz\FileManager\Helpers\FileManagerHelper;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOne;
-use Modules\Filemanager\Helpers\FilemanagerHelper;
 
 /**
  * @property string title
