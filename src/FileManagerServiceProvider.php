@@ -30,11 +30,9 @@ class FileManagerServiceProvider extends ServiceProvider
         }
 
         $this->publishes([
-            __DIR__ . '/Database/Migrations/create_folders_table.php.stub' => $this->getMigrationFileName('create_folders_table.php'),
-        ], 'migrations');
-        sleep(1);
-        $this->publishes([
-            __DIR__ . '/Database/Migrations/create_files_table.php.stub' => $this->getMigrationFileName('create_files_table.php'),
+            __DIR__ . '/Database/Migrations/create_folders_table.php.stub' => $this->getMigrationFileName('2022_12_23_010706_create_folders_table.php'),
+            __DIR__ . '/Database/Migrations/create_files_table.php.stub' => $this->getMigrationFileName('2022_12_23_010707_create_files_table.php'),
+
         ], 'migrations');
     }
 
@@ -43,11 +41,11 @@ class FileManagerServiceProvider extends ServiceProvider
      *
      * @param $migrationFileName
      * @return string
+     *
      * @throws BindingResolutionException
      */
     protected function getMigrationFileName($migrationFileName): string
     {
-        $timestamp = date('Y_m_d_His');
 
         $filesystem = $this->app->make(Filesystem::class);
 
@@ -55,7 +53,7 @@ class FileManagerServiceProvider extends ServiceProvider
             ->flatMap(function ($path) use ($filesystem, $migrationFileName) {
                 return $filesystem->glob($path . '*_' . $migrationFileName);
             })
-            ->push($this->app->databasePath() . "/migrations/{$timestamp}_{$migrationFileName}")
+            ->push($this->app->databasePath() . "/migrations/{$migrationFileName}")
             ->first();
     }
 }
