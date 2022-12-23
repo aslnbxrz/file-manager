@@ -2,10 +2,10 @@
 
 namespace Aslnbxrz\FileManager\Http\Repository\Interfaces;
 
+use Aslnbxrz\FileManager\Models\Files;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
-use Modules\Filemanager\Dto\GeneratePathFileDTO;
-use Modules\Filemanager\Entities\Files;
+use Aslnbxrz\FileManager\DTO\GeneratePathFileDTO;
 
 interface FileInterface
 {

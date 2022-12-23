@@ -2,6 +2,10 @@
 
 namespace Aslnbxrz\FileManager\Http\Repository;
 
+use Aslnbxrz\FileManager\DTO\GeneratedPathFileDTO;
+use Aslnbxrz\FileManager\DTO\GeneratePathFileDTO;
+use Aslnbxrz\FileManager\Helpers\FileManagerHelper;
+use Aslnbxrz\FileManager\Models\Files;
 use DomainException;
 use Exception;
 use Illuminate\Http\Request;
@@ -12,10 +16,6 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
-use Modules\Filemanager\Dto\GeneratedPathFileDTO;
-use Modules\Filemanager\Dto\GeneratePathFileDTO;
-use Modules\Filemanager\Entities\Files;
-use Modules\Filemanager\Helpers\FilemanagerHelper;
 use Aslnbxrz\FileManager\Http\Repository\Interfaces\FileInterface;
 use Symfony\Component\Finder\Exception\AccessDeniedException;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
