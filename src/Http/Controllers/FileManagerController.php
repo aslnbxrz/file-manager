@@ -44,7 +44,7 @@ class FileManagerController extends Controller
         } else {
             $data = $this->fileRepository->checkAndUpload($request, $files, $isFront);
         }
-        return successResponse("Uploaded successfully", $data);
+        return response()->json(["message"=>"Uploaded successfully","data"=>$data]);
     }
 
     public function frontUpload(Request $request)
@@ -68,6 +68,6 @@ class FileManagerController extends Controller
         }
         File::delete($filePath);
         $file->delete();
-        return successResponse('deleted', $oldFile);
+        return response()->json(["message"=>"Deleted","data"=>$oldFile]);
     }
 }

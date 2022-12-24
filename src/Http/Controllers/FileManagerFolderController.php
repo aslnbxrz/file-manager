@@ -38,6 +38,7 @@ class FileManagerFolderController extends Controller
     {
         $deletedFolder = clone $folder;
         $folder->delete();
-        return successResponse("Deleted", $deletedFolder);
+
+        return response()->json(["message"=>"Deleted","data"=>$deletedFolder]);
     }
 }

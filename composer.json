@@ -6,11 +6,7 @@
     "autoload": {
         "psr-4": {
             "Aslnbxrz\\FileManager\\": "src/"
-
-        },
-        "files": [
-            "src/Helpers/ResponseHelper.php"
-        ]
+        }
     },
     "authors": [
         {
