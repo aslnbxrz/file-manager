@@ -21,8 +21,8 @@
     "require": {
         "php": "^8.0|^8.1",
         "intervention/image": "^2.7",
-        "laravel/passport": "^11.3",
-        "spatie/laravel-query-builder": "^5.1"
+        "laravel/passport": "^^10.0",
+        "spatie/laravel-query-builder": "^4.0.3"
     },
     "extra": {
         "laravel": {
