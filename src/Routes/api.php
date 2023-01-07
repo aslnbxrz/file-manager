@@ -3,6 +3,7 @@
 use App\Models\User;
 use Aslnbxrz\FileManager\Http\Controllers\FileManagerController;
 use Aslnbxrz\FileManager\Http\Controllers\FileManagerFolderController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,7 +20,7 @@ use Aslnbxrz\FileManager\Http\Controllers\FileManagerFolderController;
             File manager Controller  => START
 --------------------------------------------------------------------------------*/
 Route::prefix('v1')->group(function () {
-    Route::middleware(['auth', 'scope:' . implode(',', User::ADMIN_ROLES)])->group(function () {
+    Route::middleware(['auth', 'scope:admin'])->group(function () {
         Route::prefix('admin/file-manager/folder')
             ->controller(FileManagerFolderController::class)
             ->group(function () {
